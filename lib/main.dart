@@ -27,15 +27,15 @@ class ProductListScreen extends StatelessWidget {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         primary: false,
         children: const [
-          ProductItem(name: 'coat for kid'),
-          ProductItem(name: 'coat'),
-          ProductItem(name: 'Daura surwal'),
-          ProductItem(name: 'Shirt'),
+          ProductItem(name: 'Coat for Kid', imagePath: 'assets/images/coat_for_kid.jpg'),
+          ProductItem(name: 'Coat', imagePath: 'assets/images/coat.jpg'),
+          ProductItem(name: 'Daura Surwal', imagePath: 'assets/images/daura_surwal.jpg'),
+          ProductItem(name: 'Shirt', imagePath: 'assets/images/Shirt.jpg'),
         ],
       ),
     );
@@ -44,8 +44,9 @@ class ProductListScreen extends StatelessWidget {
 
 class ProductItem extends StatelessWidget {
   final String name;
+  final String imagePath;
 
-  const ProductItem({super.key, required this.name});
+  const ProductItem({super.key, required this.name, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -55,20 +56,20 @@ class ProductItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-        
-          Container(
+          Image.asset(
+            imagePath,
             height: 100,
             width: 100,
-            color: Colors.grey, 
+            fit: BoxFit.cover,
           ),
           
           Text(
             name,
             style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
+
           ElevatedButton(
             onPressed: () {
-              // ignore: avoid_print
               print('Buy Now: $name');
             },
             child: const Text('Buy Now'),
